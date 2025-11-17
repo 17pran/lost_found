@@ -1,0 +1,19 @@
+<div th:fragment="content">
+    <h2>Report Lost Item</h2>
+
+    <form th:action="@{/lost/add}" method="post">
+        <label>Item Name:</label>
+        <input type="text" name="itemName" required>
+
+        <label>Description:</label>
+        <textarea name="description" required></textarea>
+
+        <label>Location:</label>
+        <input type="text" name="location" required>
+
+        <label>Date Lost:</label>
+        <input type="date" name="date" required>
+
+        <button class="btn">Submit</button>
+    </form>
+</div>

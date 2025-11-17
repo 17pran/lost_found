@@ -1,0 +1,14 @@
+<div th:fragment="content">
+    <h2>Lost Items</h2>
+
+    <div class="item-list">
+        <div class="item-card" th:each="item : ${lostItems}">
+            <h3 th:text="${item.itemName}"></h3>
+            <p th:text="${item.description}"></p>
+            <p><strong>Date:</strong> <span th:text="${item.date}"></span></p>
+            <p><strong>Location:</strong> <span th:text="${item.location}"></span></p>
+
+            <a th:href="@{'/item/' + ${item.id}}" class="btn-small">View Details</a>
+        </div>
+    </div>
+</div>

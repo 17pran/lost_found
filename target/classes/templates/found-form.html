@@ -1,0 +1,19 @@
+<div th:fragment="content">
+    <h2>Report Found Item</h2>
+
+    <form th:action="@{/found/add}" method="post">
+        <label>Item Name:</label>
+        <input type="text" name="itemName" required>
+
+        <label>Description:</label>
+        <textarea name="description" required></textarea>
+
+        <label>Location Found:</label>
+        <input type="text" name="location" required>
+
+        <label>Date Found:</label>
+        <input type="date" name="date" required>
+
+        <button class="btn">Submit</button>
+    </form>
+</div>

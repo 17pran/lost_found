@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Lost & Found</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Lost & Found</div>
+        <ul class="nav-links">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/lost}">Lost Items</a></li>
+            <li><a th:href="@{/found}">Found Items</a></li>
+            <li><a th:href="@{/lost/add}">Report Lost</a></li>
+            <li><a th:href="@{/found/add}">Report Found</a></li>
+
+            <li th:if="${#request.remoteUser == null}">
+                <a th:href="@{/login}">Login</a>
+            </li>
+            <li th:if="${#request.remoteUser == null}">
+                <a th:href="@{/register}">Register</a>
+            </li>
+
+            <li th:if="${#request.remoteUser}">
+                <a th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div th:insert="${view}"></div>
+</main>
+
+<footer>
+    <p>© 2025 Lost & Found Application</p>
+</footer>
+
+</body>
+</html>

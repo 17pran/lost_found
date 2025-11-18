@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.UserService;
-import com.example.demo.model.User;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +18,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String doLogin(
-            @RequestParam String username,
-            @RequestParam String password,
-            HttpSession session) {
+    public String doLogin(@RequestParam String username,
+                          @RequestParam String password,
+                          HttpSession session) {
 
         if (userService.validateUser(username, password)) {
             session.setAttribute("user", username);
@@ -37,11 +35,14 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String register(
-            @RequestParam String username,
-            @RequestParam String password) {
+    public String register(@RequestParam String username,
+                           @RequestParam String password) {
 
-        userService.register(username, password);
+        try {
+            userService.register(username, password);
+        } catch (RuntimeException e) {
+            return "redirect:/register?error=" + e.getMessage();
+        }
         return "redirect:/login?registered=true";
     }
 

@@ -2,13 +2,18 @@ package com.example.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
 @Entity
 public class User {
 
     @Id
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
     private String password;
+
     private String role;
 
     public User() {}

@@ -2,23 +2,26 @@ package com.example.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+import java.time.LocalDate;
 
 @Entity
 public class FoundItem {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String itemName;
     private String description;
     private String location;
-    private String date;   // <-- NEW FIELD
+    private LocalDate date;
 
     public FoundItem() {}
 
-    public FoundItem(String itemName, String description, String location, String date) {
+    public FoundItem(String itemName, String description, String location, LocalDate date) {
         this.itemName = itemName;
         this.description = description;
         this.location = location;
@@ -53,11 +56,11 @@ public class FoundItem {
         this.location = location;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }
